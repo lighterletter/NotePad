@@ -6,7 +6,7 @@ It is to be built over the month of July, 2017.
 
 There are 4 main tasks listed as project 'issues'. Each of these are equivalent to a weekly 'sprint'. In which we'll work on building a component of the app together.
 
-##### Week 1: Splash screen. 
+#### Week 1: Splash screen. 
 
 We'll begin in simplicity to get the hang of working together. This week we will establish a system that will set the pace for the next month. 
 
