@@ -25,10 +25,12 @@ The merge process will be as such:
 
 This week it will be: `1-splash-yourname.`
 
- You are all to work on making this feature complete, this means that you will all branch away from master with the appropriate branch name, push this branch to the repo, create and open a pull request for this feature and push continually as you collectively work together to complete it. During class time we will discuss different approaches and work to complete a version that all of us are okay with.   
+* You are all to work on making this feature complete, this means that you will all branch away from master with the appropriate branch name, push this branch to the repo, create and open a pull request for this feature and push continually as you collectively work together to complete it. During class time we will discuss different approaches and work to complete a version that all of us are okay with.   
 
-You will measure yourself by talking through these pull requests and updating your branches. Copy pasting will do you a disservice, the point is to investigate approaches individually ask each other questions and come up with a solution that works for everybody.
+* You will measure yourself by talking through these pull requests and updating your branches. Copy pasting will do you a disservice, the point is to investigate approaches individually ask each other questions and come up with a solution that works for everybody.
 
-The final feature will be a collective branch merged after a review from each member.
+* The final feature will be a collective branch merged after a review from each member.
 
-At the end of Sunday night of class that week, the feature should be complete and the introducion and discussion of the next component should take place.
+* At the end of Sunday night of class that week, the feature should be complete and the introducion and discussion of the next component should take place.
+
+* If you have any questions about the feature, this can be addressed as a comment on the appropriate issue. 
