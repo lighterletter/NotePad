@@ -20,7 +20,7 @@ The merge process will be as such:
 Depending on what week we're in, and push that branch: `git push -u origin yourbranchname`, to the remote. Each student is to then make a pull request to `develop` and begin working on their local branch continually pushing to remote so that you update your pull request and others can comment on your code.
 
 
-#### Week 1: Splash screen. 
+### Week 1: Splash screen. 
 
 We'll begin in simplicity to get the hang of working together. This week we will establish a system that will set the pace for the next month. 
 
