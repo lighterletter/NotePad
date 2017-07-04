@@ -16,7 +16,7 @@ The merge process will be as such:
 
   This means that each of you should pull the project, create a branch in the format of: 
 
-    1-splash-yourname// 
+    1-splash-yourname
     2-rv-yourname
     3-dialog-yourname
     4-db-yourname
