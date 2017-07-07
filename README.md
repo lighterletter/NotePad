@@ -33,3 +33,9 @@ This week your branch name will be: `1-splash-yourname.`
 * At the end of Sunday night of class that week, the feature should be complete and the introducion and discussion of the next component should take place.
 
 * If you have any questions about the feature, this can be addressed as a comment on the relevant issue. 
+
+#### Week 1: class 1 review:
+
+* This first class we touched upon the import feature on android studio, we learned that when ever we need to import a project onto android studio we need to choose the folder that contains the gradle files at the root. In our case this is  in `NotePad/NotePad/`
+* We also talked about different approaches when it comes to building features, ideally we want to build them correctly and the best way possible the first time arround, but a very real concern is that at work we will have deadlines to accomplish and we need to know how to make the best tradeoffs possible. In the github issue I denoted what would be the best way to build a splashscreen had we the time, but since we have only a month, we will instead try to build this using views. In the github issue I will have updated the task with how the splash screen should look, using custom views.
+* During `Solve` we tried the "given a string, replace all the ' ' characters with '%20'" problem. We found out that there are a couple of different apporaches on solving this and left it open so that students would try to solve it in their own time. 
