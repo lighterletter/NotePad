@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
@@ -13,7 +14,6 @@ import android.widget.ProgressBar;
  */
 
 public class SplashActivity extends AppCompatActivity {
-    private final int SPLASH_DISPLAY_LENGTH = 2000;
     private ProgressBar mProgressBar;
 
     @Override
@@ -22,16 +22,20 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-        ObjectAnimator animator = new ObjectAnimator()
+        ObjectAnimator animator = ObjectAnimator
                 .ofInt(mProgressBar, "progress", 500)
                 .setDuration(1000);
         animator.setRepeatCount(1);
+        animator.addListener(getAnimListener());
         animator.start();
+    }
 
-        animator.addListener(new Animator.AnimatorListener() {
+    @NonNull
+    private Animator.AnimatorListener getAnimListener() {
+        return new Animator.AnimatorListener() {
             @Override
-            public void onAnimationStart(Animator animation) { }
+            public void onAnimationStart(Animator animation) {
+            }
 
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -41,10 +45,12 @@ public class SplashActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onAnimationCancel(Animator animation) { }
+            public void onAnimationCancel(Animator animation) {
+            }
 
             @Override
-            public void onAnimationRepeat(Animator animation) { }
-        });
+            public void onAnimationRepeat(Animator animation) {
+            }
+        };
     }
 }

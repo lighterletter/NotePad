@@ -6,18 +6,18 @@
         android:duration="1"
         android:toDegrees="1080">
     <shape
-        android:innerRadiusRatio="3"
+        android:innerRadiusRatio="2"
         android:shape="ring"
-        android:thicknessRatio="8"
+        android:thicknessRatio="10"
         android:useLevel="false" >
 
         <size
-            android:height="76dip"
-            android:width="76dip" />
+            android:height="150dp"
+            android:width="150dp" />
 
         <gradient
             android:angle="0"
-            android:endColor="@color/colorProgressCircle"
+            android:endColor="#FFFFFF"
             android:startColor="@android:color/transparent"
             android:type="sweep"
             android:useLevel="false" />
