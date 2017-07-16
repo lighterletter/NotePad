@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Theme.AppCompat.NoActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSplashBackground"
-    style="@style/Theme.AppCompat.DayNight.NoActionBar"
     tools:context="c4q.notepad.SplashActivity">
 
     <TextView
@@ -33,10 +33,10 @@
         android:text="PAD"
         android:textColor="@color/colorTitleBottom"
         android:textSize="44sp"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splash_top_tv"
-        app:layout_constraintHorizontal_bias="0.501"/>
+        app:layout_constraintTop_toBottomOf="@+id/splash_top_tv"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -47,12 +47,15 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="0dp"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@xml/progress"
+        android:max="500"
         android:padding="16dp"
+        android:progress="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0"
-        android:indeterminate="true"
-        android:indeterminateDrawable="@xml/progress"/>
+        app:layout_constraintVertical_bias="0.0"/>
+
 </android.support.constraint.ConstraintLayout>
