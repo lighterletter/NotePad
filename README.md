@@ -53,4 +53,6 @@ This week your branch name will be: `1-splash-yourname.`
 
 * At the end of class we went over a shift matrix problem where the input was a String[] where n >= 1 and each item in the collection corresponds to dots and letters, ie: ".a.b." and a String with directions "LDRU". The objective of the problem was to parse this string given to us so that we would shift letters to "open":('.') spaces by replacing the dots with the letter correspoing in the proper direction.
     
-  
+#### Week 2: class 2 review:
+
+* In this class we built out the basics of the recycler view, we also created a Floating action button with the intention of having a click listener on it that when clicked would add a new item to the recycler view.
