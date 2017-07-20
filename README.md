@@ -56,3 +56,10 @@ This week your branch name will be: `1-splash-yourname.`
 #### Week 2: class 2 review:
 
 * In this class we built out the basics of the recycler view, we also created a Floating action button with the intention of having a click listener on it that when clicked would add a new item to the recycler view.
+
+#### Week 3: class 1 review:
+
+* In this class we finished the last things needed for the implementation of the recyclewview and began work on the dialog fragment. 
+
+* we learned that there are different ways to work with dialogs in android, we can create our own custom one, or use an alert dialog provided by the system. We can also create a fragment or a fragment dialog. 
+
