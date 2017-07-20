@@ -1,4 +1,4 @@
-package c4q.notepad;
+package c4q.notepad.model;
 
 import java.util.Calendar;
 import java.util.UUID;

@@ -1,13 +1,14 @@
-package c4q.notepad;
+package c4q.notepad.recyclerhelpers;
 
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import c4q.notepad.model.Note;
+import c4q.notepad.R;
 
 /**
  * Created by maxrosado on 7/16/17.
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 
-    List<Note> mNoteList;
+    private List<Note> mNoteList;
 
     public NoteAdapter(List<Note> noteList) {
         mNoteList = noteList;

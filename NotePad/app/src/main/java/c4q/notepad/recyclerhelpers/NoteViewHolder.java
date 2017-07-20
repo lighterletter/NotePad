@@ -1,14 +1,12 @@
-package c4q.notepad;
+package c4q.notepad.recyclerhelpers;
 
-import android.support.v7.widget.CardView;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import c4q.notepad.R;
+import c4q.notepad.model.Note;
 
 /**
  * Created by maxrosado on 7/16/17.
@@ -16,10 +14,8 @@ import org.w3c.dom.Text;
 
 public class NoteViewHolder extends RecyclerView.ViewHolder {
 
-    TextView mTitle;
-    TextView mText;
-    Note mNote;
-    CardView mCardView;
+    private TextView mTitle;
+    private TextView mText;
 
 
     public NoteViewHolder(View parent) {
@@ -27,17 +23,16 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "You clicked me!", Toast.LENGTH_SHORT).show();
+                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 
-        mCardView = (CardView) itemView.findViewById(R.id.item_note);
         mTitle = (TextView) itemView.findViewById(R.id.title_tv);
         mText = (TextView) itemView.findViewById(R.id.text_tv);
     }
 
     public void bind(Note note) {
-        mNote = note;
         mText.setText(note.getText());
         mTitle.setText(note.getTitle());
     }
