@@ -32,12 +32,12 @@
                 android:textSize="44sp" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/splash_bottom_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PAD"
                 android:textColor="@color/colorTitleBottom"
-                android:textSize="44sp" />
+                android:textSize="44sp"/>
 
         </LinearLayout>
 
