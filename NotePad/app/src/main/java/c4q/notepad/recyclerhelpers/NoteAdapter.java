@@ -1,8 +1,8 @@
 package c4q.notepad.recyclerhelpers;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
@@ -17,22 +17,25 @@ import c4q.notepad.R;
 public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 
     private List<Note> mNoteList;
+    private FragmentManager mFragmentManager;
 
     public NoteAdapter(List<Note> noteList) {
         mNoteList = noteList;
     }
 
+    public NoteAdapter(List<Note>data, FragmentManager fragmentManager){
+        this.mNoteList = data;
+        this.mFragmentManager = fragmentManager;
+    }
+
     @Override
     public NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_note_layout, parent, false);
-        NoteViewHolder noteViewHolder = new NoteViewHolder(v);
-        return noteViewHolder;
+        return new NoteViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_note_layout, parent, false), this.mFragmentManager);
     }
 
     @Override
     public void onBindViewHolder(NoteViewHolder holder, int position) {
-        Note note = mNoteList.get(position);
-        holder.bind(note);
+        holder.bind(mNoteList.get(position));
     }
 
     @Override
