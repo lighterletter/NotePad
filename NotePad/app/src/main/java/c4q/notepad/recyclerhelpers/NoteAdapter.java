@@ -16,30 +16,30 @@ import c4q.notepad.R;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 
-    private List<Note> mNoteList;
-    private FragmentManager mFragmentManager;
+    private List<Note> noteList;
+    private FragmentManager fragmentManager;
 
     public NoteAdapter(List<Note> noteList) {
-        mNoteList = noteList;
+        this.noteList = noteList;
     }
 
     public NoteAdapter(List<Note>data, FragmentManager fragmentManager){
-        this.mNoteList = data;
-        this.mFragmentManager = fragmentManager;
+        this.noteList = data;
+        this.fragmentManager = fragmentManager;
     }
 
     @Override
     public NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new NoteViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_note_layout, parent, false), this.mFragmentManager);
+        return new NoteViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_note_layout, parent, false), this.fragmentManager);
     }
 
     @Override
     public void onBindViewHolder(NoteViewHolder holder, int position) {
-        holder.bind(mNoteList.get(position));
+        holder.bind(noteList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mNoteList.size();
+        return noteList.size();
     }
 }

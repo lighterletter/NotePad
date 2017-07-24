@@ -18,28 +18,28 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String NOTE_DIALOG = "NoteDialog";
 
-    private RecyclerView mRecyclerView;
-    private NoteAdapter mAdapter;
-    private FloatingActionButton mFloatingActionButton;
-    private FragmentManager mFragmentManager;
+    private RecyclerView noteRecyclerView;
+    private NoteAdapter noteAdapter;
+    private FloatingActionButton floationgActionButton;
+    private FragmentManager fragmentManager;
 
-    private List<Note> mNotes;
+    private List<Note> notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mNotes = new ArrayList<>();
-        mFragmentManager = getSupportFragmentManager();
+        notes = new ArrayList<>();
+        fragmentManager = getSupportFragmentManager();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.notes_rv);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new NoteAdapter(mNotes, mFragmentManager);
-        mRecyclerView.setAdapter(mAdapter);
+        noteRecyclerView = (RecyclerView) findViewById(R.id.notes_rv);
+        noteRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        noteAdapter = new NoteAdapter(notes, fragmentManager);
+        noteRecyclerView.setAdapter(noteAdapter);
 
-        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
-        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+        floationgActionButton = (FloatingActionButton) findViewById(R.id.fab);
+        floationgActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showNoteDialog();
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         Note newNote = new Note();
         newNote.setText("This is my note.");
         newNote.setTitle("This is the note I created programaticlly");
-        mNotes.add(newNote);
-        mAdapter.notifyDataSetChanged();
+        notes.add(newNote);
+        noteAdapter.notifyDataSetChanged();
     }
 }

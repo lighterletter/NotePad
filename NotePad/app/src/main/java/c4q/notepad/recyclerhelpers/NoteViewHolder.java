@@ -1,6 +1,5 @@
 package c4q.notepad.recyclerhelpers;
 
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -18,8 +17,8 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
 
     private static final String NOTE_DIALOG = "NoteDialog";
 
-    private TextView mTitle;
-    private TextView mText;
+    private TextView titleTV;
+    private TextView textTV;
 
     public NoteViewHolder(View parent, final FragmentManager fragmentManager) {
         super(parent);
@@ -30,13 +29,13 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
-        mTitle = (TextView) itemView.findViewById(R.id.title_tv);
-        mText = (TextView) itemView.findViewById(R.id.text_tv);
+        titleTV = (TextView) itemView.findViewById(R.id.title_tv);
+        textTV = (TextView) itemView.findViewById(R.id.text_tv);
     }
 
     public void bind(Note note) {
-        mText.setText(note.getText());
-        mTitle.setText(note.getTitle());
+        textTV.setText(note.getText());
+        titleTV.setText(note.getTitle());
     }
 
     public void editNote (FragmentManager fragmentManager) {
