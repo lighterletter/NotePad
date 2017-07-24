@@ -1,10 +1,11 @@
 package c4q.notepad.recyclerhelpers;
 
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import c4q.notepad.NoteDialogFragment;
 import c4q.notepad.R;
 import c4q.notepad.model.Note;
 
@@ -14,26 +15,33 @@ import c4q.notepad.model.Note;
 
 public class NoteViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView mTitle;
-    private TextView mText;
+    private static final String NOTE_DIALOG = "NoteDialog";
 
+    private TextView titleTV;
+    private TextView textTV;
 
-    public NoteViewHolder(View parent) {
+    public NoteViewHolder(View parent, final FragmentManager fragmentManager) {
         super(parent);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                editNote(fragmentManager);
             }
         });
 
-        mTitle = (TextView) itemView.findViewById(R.id.title_tv);
-        mText = (TextView) itemView.findViewById(R.id.text_tv);
+        titleTV = (TextView) itemView.findViewById(R.id.title_tv);
+        textTV = (TextView) itemView.findViewById(R.id.text_tv);
     }
 
     public void bind(Note note) {
-        mText.setText(note.getText());
-        mTitle.setText(note.getTitle());
+        textTV.setText(note.getText());
+        titleTV.setText(note.getTitle());
     }
+
+    public void editNote (FragmentManager fragmentManager) {
+        NoteDialogFragment noteDialogFragment = new NoteDialogFragment();
+        noteDialogFragment.show(fragmentManager, NOTE_DIALOG);
+    }
+
+
 }

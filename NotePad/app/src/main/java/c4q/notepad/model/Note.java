@@ -1,30 +1,27 @@
 package c4q.notepad.model;
 
-import java.util.Calendar;
-import java.util.UUID;
-
 /**
  * Created by maxrosado on 7/16/17.
  */
 
 public class Note {
 
-    private String mTitle;
-    private String mText;
+    private String title;
+    private String text;
 
     public String getTitle() {
-        return mTitle;
+        return title;
     }
 
     public void setTitle(String title) {
-        mTitle = title;
+        this.title = title;
     }
 
     public String getText() {
-        return mText;
+        return text;
     }
 
     public void setText(String text) {
-        mText = text;
+        this.text = text;
     }
 }
