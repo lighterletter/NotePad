@@ -1,10 +1,14 @@
 package c4q.notepad.model;
 
+import java.io.Serializable;
+
+import io.realm.RealmObject;
+
 /**
  * Created by maxrosado on 7/16/17.
  */
 
-public class Note {
+public class Note extends RealmObject implements Serializable {
 
     private String title;
     private String text;

@@ -14,6 +14,8 @@ import java.util.List;
 
 import c4q.notepad.model.Note;
 import c4q.notepad.recyclerhelpers.NoteAdapter;
+import io.realm.Realm;
+import io.realm.RealmList;
 
 public class MainActivity extends AppCompatActivity implements FinishedNoteListener {
 
@@ -25,11 +27,13 @@ public class MainActivity extends AppCompatActivity implements FinishedNoteListe
     private FloatingActionButton floationgActionButton;
     private List<Note> notes;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //TODO: get realm instance
+        //TODO: populate list of note from database.
 
         notes = new ArrayList<>();
         noteRecyclerView = (RecyclerView) findViewById(R.id.notes_rv);
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements FinishedNoteListe
                 showNoteDialog();
             }
         });
+
     }
 
     private void showNoteDialog() {
@@ -53,10 +58,15 @@ public class MainActivity extends AppCompatActivity implements FinishedNoteListe
         noteDialogFragment.show(manager, NOTE_DIALOG);
     }
 
+
     @Override
     public void createNewNote(Note note) {
-        notes.add(note);
-        noteAdapter.notifyDataSetChanged();
+        if (notes.contains(note)) {
+            noteAdapter.notifyDataSetChanged();
+        } else {
+            notes.add(note);
+            noteAdapter.notifyDataSetChanged();
+        }
     }
 }
 

@@ -43,8 +43,7 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
     private void editNote (Note note, FinishedNoteListener listener) {
 
         Bundle bundle = new Bundle();
-        bundle.putString("note_title", note.getTitle());
-        bundle.putString("note_text", note.getText());
+        bundle.putSerializable("note", note);
 
         FragmentManager fm = ((AppCompatActivity) itemView.getContext()).getSupportFragmentManager();
         NoteDialogFragment noteDialogFragment = new NoteDialogFragment();
