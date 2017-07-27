@@ -6,16 +6,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import c4q.notepad.model.Note;
 import c4q.notepad.recyclerhelpers.NoteAdapter;
+
 import io.realm.Realm;
-import io.realm.RealmList;
+import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity implements FinishedNoteListener {
 
@@ -25,17 +22,15 @@ public class MainActivity extends AppCompatActivity implements FinishedNoteListe
     private RecyclerView noteRecyclerView;
     private NoteAdapter noteAdapter;
     private FloatingActionButton floationgActionButton;
-    private List<Note> notes;
+    private RealmResults<Note> notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Realm.init(this);
 
-        //TODO: get realm instance
-        //TODO: populate list of note from database.
-
-        notes = new ArrayList<>();
+        notes = Realm.getDefaultInstance().where(Note.class).findAll();
         noteRecyclerView = (RecyclerView) findViewById(R.id.notes_rv);
         noteRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         noteAdapter = new NoteAdapter(notes, this);
@@ -60,13 +55,8 @@ public class MainActivity extends AppCompatActivity implements FinishedNoteListe
 
 
     @Override
-    public void createNewNote(Note note) {
-        if (notes.contains(note)) {
-            noteAdapter.notifyDataSetChanged();
-        } else {
-            notes.add(note);
-            noteAdapter.notifyDataSetChanged();
-        }
+    public void updateUI() {
+        noteAdapter.notifyDataSetChanged();
     }
 }
 

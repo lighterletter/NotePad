@@ -41,6 +41,14 @@
                 android:paddingRight="30dp"
                 android:text="Body of text."
                 android:textColor="#8A939D"/>
+
+            <Button
+                android:id="@+id/delete_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/text_tv"
+                android:layout_alignParentEnd="true"
+                android:text="Delete"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>
