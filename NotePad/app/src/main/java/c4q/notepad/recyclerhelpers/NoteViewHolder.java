@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -30,7 +31,7 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.title_tv) TextView titleTV;
     @BindView(R.id.text_tv) TextView textTV;
-    @BindView(R.id.delete_button) Button deleteButton;
+    @BindView(R.id.delete_button) ImageButton deleteButton;
 
     public NoteViewHolder(View parent) {
         super(parent);

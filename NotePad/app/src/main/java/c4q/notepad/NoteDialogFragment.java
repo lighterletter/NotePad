@@ -25,10 +25,13 @@ public class NoteDialogFragment extends android.support.v4.app.DialogFragment {
     private FinishedNoteListener listener;
     private Note note = null;
 
-    @BindString(R.string.dialog_new_note) String dialogTitle;
+    @BindString(R.string.dialog_new_note)
+    String dialogTitle;
 
-    @BindView(R.id.new_note_title_input) EditText titleEditText;
-    @BindView(R.id.new_note_text_body_input) EditText noteEditText;
+    @BindView(R.id.new_note_title_input)
+    EditText titleEditText;
+    @BindView(R.id.new_note_text_body_input)
+    EditText noteEditText;
 
     public void setfinishedNoteListener(FinishedNoteListener listener) {
         this.listener = listener;

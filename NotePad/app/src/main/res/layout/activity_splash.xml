@@ -27,7 +27,7 @@
                 android:id="@+id/splash_top_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NOTE"
+                android:text="@string/splash_top_title"
                 android:textColor="@color/colorTitleTop"
                 android:textSize="44sp" />
 
@@ -35,7 +35,7 @@
                 android:id="@+id/splash_bottom_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PAD"
+                android:text="@string/splash_bottom_title"
                 android:textColor="@color/colorTitleBottom"
                 android:textSize="44sp"/>
 
