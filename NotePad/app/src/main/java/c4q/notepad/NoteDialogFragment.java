@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -60,7 +61,7 @@ public class NoteDialogFragment extends android.support.v4.app.DialogFragment {
         return getAlertDialog(v, titleEditText, noteEditText);
     }
 
-    private AlertDialog getAlertDialog(View v, final EditText titleed, final EditText noteed) {
+    private AlertDialog getAlertDialog(final View v, final EditText titleed, final EditText noteed) {
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
                 .setTitle(dialogTitle)
@@ -71,19 +72,24 @@ public class NoteDialogFragment extends android.support.v4.app.DialogFragment {
                         String titleText = String.valueOf(titleed.getText());
                         String noteText = String.valueOf(noteed.getText());
 
-                        Realm realm = Realm.getDefaultInstance();
-                        realm.beginTransaction();
+                        if(!noteText.equals("") && !titleText.equals("")) {
 
-                        if (note == null) {
-                            note = realm.createObject(Note.class);
+                            Realm realm = Realm.getDefaultInstance();
+                            realm.beginTransaction();
+
+                            if (note == null) {
+                                note = realm.createObject(Note.class);
+                            }
+
+                            note.setTitle(titleText);
+                            note.setText(noteText);
+
+                            realm.insertOrUpdate(note);
+                            realm.commitTransaction();
+                            listener.updateUI();
+                        } else {
+                            Toast.makeText(v.getContext(), "Must have a title and a note to save.", Toast.LENGTH_SHORT).show();
                         }
-
-                        note.setTitle(titleText);
-                        note.setText(noteText);
-
-                        realm.insertOrUpdate(note);
-                        realm.commitTransaction();
-                        listener.updateUI();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
