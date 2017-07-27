@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 
 import c4q.notepad.model.Note;
 import c4q.notepad.recyclerhelpers.NoteAdapter;
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements FinishedNoteListe
                 showNoteDialog();
             }
         });
-
     }
 
     private void showNoteDialog() {
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements FinishedNoteListe
         noteDialogFragment.setfinishedNoteListener(this);
         noteDialogFragment.show(manager, NOTE_DIALOG);
     }
-
 
     @Override
     public void updateUI() {
