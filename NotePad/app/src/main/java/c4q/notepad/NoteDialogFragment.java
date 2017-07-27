@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import c4q.notepad.model.Note;
+import io.realm.Realm;
 
 /**
  * Created by maxrosado on 7/19/17.
@@ -59,13 +60,19 @@ public class NoteDialogFragment extends android.support.v4.app.DialogFragment {
                         String titleText = String.valueOf(titleed.getText());
                         String noteText = String.valueOf(noteed.getText());
 
-                        if (note == null) {
-                            note = new Note();
-                        }
+                        Realm realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
 
+                        if (note == null) {
+                            note = realm.createObject(Note.class);
+                        }
                         note.setTitle(titleText);
                         note.setText(noteText);
-                        listener.createNewNote(note);
+                        realm.insertOrUpdate(note);
+                        realm.commitTransaction();
+                        listener.createNewNote();
+
+
 
                     }
                 })

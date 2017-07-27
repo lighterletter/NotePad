@@ -16,6 +16,7 @@ import c4q.notepad.model.Note;
 import c4q.notepad.recyclerhelpers.NoteAdapter;
 import io.realm.Realm;
 import io.realm.RealmList;
+import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity implements FinishedNoteListener {
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements FinishedNoteListe
     private RecyclerView noteRecyclerView;
     private NoteAdapter noteAdapter;
     private FloatingActionButton floationgActionButton;
-    private List<Note> notes;
+    private RealmResults<Note> notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +35,9 @@ public class MainActivity extends AppCompatActivity implements FinishedNoteListe
 
         //TODO: get realm instance
         //TODO: populate list of note from database.
+        Realm.init(this);
 
-        notes = new ArrayList<>();
+        notes = Realm.getDefaultInstance().where(Note.class).findAll();
         noteRecyclerView = (RecyclerView) findViewById(R.id.notes_rv);
         noteRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         noteAdapter = new NoteAdapter(notes, this);
@@ -60,13 +62,8 @@ public class MainActivity extends AppCompatActivity implements FinishedNoteListe
 
 
     @Override
-    public void createNewNote(Note note) {
-        if (notes.contains(note)) {
-            noteAdapter.notifyDataSetChanged();
-        } else {
-            notes.add(note);
-            noteAdapter.notifyDataSetChanged();
-        }
+    public void createNewNote() {
+        noteAdapter.notifyDataSetChanged();
     }
 }
 
