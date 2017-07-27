@@ -10,12 +10,14 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import butterknife.OnClick;
+import io.realm.Realm;
+
 import c4q.notepad.FinishedNoteListener;
 import c4q.notepad.NoteDialogFragment;
 import c4q.notepad.R;
 import c4q.notepad.model.Note;
-import io.realm.Realm;
 
 /**
  * Created by maxrosado on 7/16/17.
@@ -24,15 +26,11 @@ import io.realm.Realm;
 public class NoteViewHolder extends RecyclerView.ViewHolder {
 
     private static final String NOTE_DIALOG = "NoteDialog";
+    private static final String NOTE_KEY = "note";
 
-    @BindView(R.id.title_tv)
-    TextView titleTV;
-
-    @BindView(R.id.text_tv)
-    TextView textTV;
-
-    @BindView(R.id.delete_button)
-    Button deleteButton;
+    @BindView(R.id.title_tv) TextView titleTV;
+    @BindView(R.id.text_tv) TextView textTV;
+    @BindView(R.id.delete_button) Button deleteButton;
 
     public NoteViewHolder(View parent) {
         super(parent);
@@ -52,25 +50,29 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Realm realm = Realm.getDefaultInstance();
-                realm.beginTransaction();
-                note.deleteFromRealm();
-                realm.commitTransaction();
-
-                listener.updateUI();
+                deleteNote(note, listener);
             }
         });
     }
 
     private void editNote (Note note, FinishedNoteListener listener) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable("note", note);
+        bundle.putSerializable(NOTE_KEY, note);
 
         FragmentManager fm = ((AppCompatActivity) itemView.getContext()).getSupportFragmentManager();
         NoteDialogFragment noteDialogFragment = new NoteDialogFragment();
         noteDialogFragment.setfinishedNoteListener(listener);
         noteDialogFragment.setArguments(bundle);
         noteDialogFragment.show(fm, NOTE_DIALOG);
+    }
+
+    private void deleteNote(Note note, FinishedNoteListener listener) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        note.deleteFromRealm();
+        realm.commitTransaction();
+
+        listener.updateUI();
     }
 
 

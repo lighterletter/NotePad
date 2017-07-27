@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import butterknife.BindString;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import c4q.notepad.model.Note;
 import io.realm.Realm;
 
@@ -17,9 +20,15 @@ import io.realm.Realm;
 
 public class NoteDialogFragment extends android.support.v4.app.DialogFragment {
 
+    private static final String NOTE_KEY = "note";
+
     private FinishedNoteListener listener;
-    private String dialogTitle = "New Note";
     private Note note = null;
+
+    @BindString(R.string.dialog_new_note) String dialogTitle;
+
+    @BindView(R.id.new_note_title_input) EditText titleEditText;
+    @BindView(R.id.new_note_text_body_input) EditText noteEditText;
 
     public void setfinishedNoteListener(FinishedNoteListener listener) {
         this.listener = listener;
@@ -29,14 +38,13 @@ public class NoteDialogFragment extends android.support.v4.app.DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View v = LayoutInflater.from(getActivity()).inflate(R.layout.note_dialog, null);
 
-        EditText titleEditText = (EditText) v.findViewById(R.id.new_note_title_input);
-        EditText noteEditText = (EditText) v.findViewById(R.id.new_note_text_body_input);
+        ButterKnife.bind(this, v);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
             // key / values
-            dialogTitle = "Edit Note";
-            note = (Note) getArguments().getSerializable("note");
+            dialogTitle = getString(R.string.dialog_edit_note);
+            note = (Note) getArguments().getSerializable(NOTE_KEY);
             String savedTitle = note.getTitle();
             String savedText = note.getText();
 
