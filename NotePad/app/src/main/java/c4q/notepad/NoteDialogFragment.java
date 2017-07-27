@@ -66,14 +66,13 @@ public class NoteDialogFragment extends android.support.v4.app.DialogFragment {
                         if (note == null) {
                             note = realm.createObject(Note.class);
                         }
+
                         note.setTitle(titleText);
                         note.setText(noteText);
+
                         realm.insertOrUpdate(note);
                         realm.commitTransaction();
-                        listener.createNewNote();
-
-
-
+                        listener.updateUI();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
