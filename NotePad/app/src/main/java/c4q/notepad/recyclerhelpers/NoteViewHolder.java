@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import c4q.notepad.FinishedNoteListener;
 import c4q.notepad.NoteDialogFragment;
 import c4q.notepad.R;
@@ -22,15 +25,18 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
 
     private static final String NOTE_DIALOG = "NoteDialog";
 
-    private TextView titleTV;
-    private TextView textTV;
-    private Button deleteButton;
+    @BindView(R.id.title_tv)
+    TextView titleTV;
+
+    @BindView(R.id.text_tv)
+    TextView textTV;
+
+    @BindView(R.id.delete_button)
+    Button deleteButton;
 
     public NoteViewHolder(View parent) {
         super(parent);
-        titleTV = (TextView) itemView.findViewById(R.id.title_tv);
-        textTV = (TextView) itemView.findViewById(R.id.text_tv);
-        deleteButton = (Button) itemView.findViewById(R.id.delete_button);
+        ButterKnife.bind(this, itemView);
     }
 
     public void bind(final Note note, final FinishedNoteListener listener) {
@@ -42,6 +48,7 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
                 editNote(note, listener);
             }
         });
+
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,13 +56,13 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
                 realm.beginTransaction();
                 note.deleteFromRealm();
                 realm.commitTransaction();
+
                 listener.updateUI();
             }
         });
     }
 
     private void editNote (Note note, FinishedNoteListener listener) {
-
         Bundle bundle = new Bundle();
         bundle.putSerializable("note", note);
 
