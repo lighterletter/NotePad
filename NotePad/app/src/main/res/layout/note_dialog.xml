@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="actionDone"
-        android:inputType="text"
-        android:hint="Title here..."
+        android:inputType="text|textMultiLine"
+        android:hint="@string/edittext_title_hint"
         android:textSize="24sp"
         android:paddingTop="8dp"
         android:paddingStart="8dp"
@@ -28,6 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="actionDone"
-        android:inputType="text"
-        android:hint="Write your note here..."/>
+        android:inputType="text|textMultiLine"
+        android:hint="@string/edittext_note_hint"/>
 </LinearLayout>
